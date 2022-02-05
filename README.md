@@ -15,7 +15,7 @@ Este artigo descreve passo a passo como preparar a sua distribuição linux para
 7. Instalação do wine
 8. Instalando os prefixos para rodar os plugins
 9. Instalação do Reaper
-10. Instalação do LinVst
+10. Instalação do yabridge
 11. Instalação dos Plugins
 12. Habilitando controlador midi no Reaper
 
@@ -150,6 +150,8 @@ cp reaper_reapack64.so ~/.config/REAPER/UserPlugins/
 ## 10. Instalação do yabridge
 
 O yabridge faz a conversão dos plugins .dll para .so, permitindo que os mesmos sejam visualizados nativamente no reaper.
+
+link do repositório do [yabridge](https://github.com/robbert-vdh/yabridge)
 
 Baixe e instale o pacote
 
