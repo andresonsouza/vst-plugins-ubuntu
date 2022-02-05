@@ -16,8 +16,7 @@ Este artigo descreve passo a passo como preparar a sua distribuição linux para
 8. Instalando os prefixos para rodar os plugins
 9. Instalação do Reaper
 10. Instalação do yabridge
-11. Instalação dos Plugins
-12. Habilitando controlador midi no Reaper
+11. Habilitando controlador midi no Reaper
 
 ## 1. Instalação do kernel de baixa latência
 
