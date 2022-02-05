@@ -1,10 +1,8 @@
 # Como usar Plugins VST no linux
 
-
 ## Descrição do artigo
 
-Este artigo descreve passo a passo como preparar a sua distribuição linux para trabalhar com produção musical, instalando e configurando todos componentes  necessários no seu so linux para que você possa fazer suas produções em seu home studio. Escolhi aqui o [xubuntu](https://xubuntu.org/) por ser uma distribuição leve e fluida. Excelente para quem deseja ter um bom desempenho e pouco consumo de recursos da máquina.
-
+Este artigo descreve passo a passo como preparar a sua distribuição linux para trabalhar com produção musical, instalando e configurando todos componentes necessários no seu so linux para que você possa fazer suas produções em seu home studio. Escolhi aqui o [xubuntu](https://xubuntu.org/) por ser uma distribuição leve e fluida. Excelente para quem deseja ter um bom desempenho e pouco consumo de recursos da máquina.
 
 ## Escopo da Instalação
 
@@ -45,6 +43,7 @@ Para processadores Intel:
 ```bash
 sudo apt install intel-microcode iucode-tool
 ```
+
 Para processadores AMD:
 
 ```bash
@@ -70,6 +69,7 @@ sudo apt-get install apt-transport-https gpgv
 ```
 
 Remover repositórios instalados:
+
 ```bash
 sudo dpkg --purge kxstudio-repos-gcc5
 ```
@@ -131,8 +131,6 @@ sudo apt install winetricks
 winetricks dotnet40 mfc40 mfc42 vcrun2008 vcrun2010 vcrun2013 vcrun2017
 ```
 
-
-
 ## 9. Instalação do Reaper
 
 ```bash
@@ -149,44 +147,30 @@ wget -c https://github.com/cfillion/reapack/releases/download/v1.2.2/reaper_reap
 cp reaper_reapack64.so ~/.config/REAPER/UserPlugins/
 ```
 
-## 10. Instalação do Linvst
+## 10. Instalação do yabridge
+
+O yabridge faz a conversão dos plugins .dll para .so, permitindo que os mesmos sejam visualizados nativamente no reaper.
 
 Baixe e instale o pacote
 
 ```bash
-wget -c https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-64bit-32bit_2.8.2.deb
-sudo dpkg -i LinVst-64bit-32bit_2.8.2.deb
-```
-Copie o arquivo .so do linvst para um local mais intuitivo:
-
-```bash
-sudo cp /usr/share/LinVst/64bit-32bit/linvst.so /opt
+wget -c https://github.com/robbert-vdh/yabridge/releases/download/3.8.0/yabridge-3.8.0-ubuntu-18.04.tar.gz
 
 ```
 
-Baixe uma logo de sua preferência para o aplicativo e a mova para o diretório que será usado no lançador:
+Adicione ao final do seu arquivo (~/.zshrc) ou (~/bashrc) a seguinte linha:
+`PATH="$PATH:$HOME/.local/share/yabridge"`
+
+Adicione o path do direrótio onde estão os plugins, como no exemplo abaixo:
 
 ```bash
-wget https://cdn.icon-icons.com/icons2/1381/PNG/512/airwavemanager_94639.png
-sudo mv airwavemanager_94639.png /usr/share/pixmaps/LinVst.png
+yabridgectl add "$HOME/.wine/drive_c/Program Files/Steinberg/VstPlugins"
 ```
 
-Crie um lançador para o aplicativo linvst:
+E finalmente sincronize a pasta:
 
 ```bash
-cat << EOF > ~/.local/share/applications/linvst.desktop
-[Desktop Entry]
-Name=LinVst
-GenericName=Vst Bridge
-X-GNOME-FullName=LinVst
-Comment=LinVst
-Keywords=api;
-Exec=/usr/bin/linvstconverttree
-Terminal=false
-Type=Application
-Icon=/usr/share/pixmaps/LinVst.png
-Categories=Development;Utilities;
-EOF
+yabridgectl sync
 ```
 
 ## 11. Instalação dos Plugins
@@ -203,7 +187,7 @@ Agora vamos baixar e instalar o plugin para convertermos e importarmos no reaper
 
 ```bash
 wget -c http://www.vst4free.com/get_plug.php\?win64\=4Front_Piano_x64.zip
-unzip get_plug.php\?win64=4Front_Piano_x64.zip 
+unzip get_plug.php\?win64=4Front_Piano_x64.zip
 ```
 
 Copie o arquivo .dll baixado para o diretótio .vst3 que criamos anteriormente. Esse processo pode ser feito tanto via linha de comando como pelo gerenciador de arquivos.
@@ -229,6 +213,4 @@ Para que haja comunicação entre a dawn e o teclado controlador precisamos ir a
 
 ![](https://imgur.com/jNK0jyI.gif)
 
-
 Voltarei em breve com mais conteúdo, fico a disposição a perguntas e dúvidas, abraços!
-
