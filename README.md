@@ -160,7 +160,7 @@ wget -c https://github.com/robbert-vdh/yabridge/releases/download/3.8.0/yabridge
 
 ```
 
-Adicione ao final do seu arquivo (~/.zshrc) ou (~/bashrc) a seguinte linha:
+Adicione ao final do seu arquivo `~/.zshrc` ou `~/bashrc` a seguinte linha:
 `PATH="$PATH:$HOME/.local/share/yabridge"`
 
 Adicione o path do direrótio onde estão os plugins, como no exemplo abaixo:
