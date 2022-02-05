@@ -175,41 +175,7 @@ E finalmente sincronize a pasta:
 yabridgectl sync
 ```
 
-## 11. Instalação dos Plugins
-
-Para exemplificar a instalação de um instrumento virtual vou usar um piano free 4Front Piano que pode ser baixado no [site](http://www.vst4free.com/free_vst.php?plugin=CVPiano&id=382).
-
-Primeiro vamos criar um diretório para armazenar nossos plugins. Será nesse diretório que o REAPER fará a busca e carregará VST's dentro da dawn.
-
-```bash
-mkdir ~/.vst3
-```
-
-Agora vamos baixar e instalar o plugin para convertermos e importarmos no reaper.
-
-```bash
-wget -c http://www.vst4free.com/get_plug.php\?win64\=4Front_Piano_x64.zip
-unzip get_plug.php\?win64=4Front_Piano_x64.zip
-```
-
-Copie o arquivo .dll baixado para o diretótio .vst3 que criamos anteriormente. Esse processo pode ser feito tanto via linha de comando como pelo gerenciador de arquivos.
-
-```bash
-cp 4Front\ Piano\ x64.dll ~/.vst3
-```
-
-Agora vamos fazer com que o reaper reconheça o plugin como se fosse nativo linux usando o linvst.
-Vou mostrar como fazer primeiramento via linha de comando.
-
-```bash
-cp /opt/linvst.so ~/.vst3/4Front\ Piano\ x64.so
-```
-
-Uma outra maneira é usando o linvst com o lançador que criamos:
-
-![](https://i.imgur.com/yVZKCC2.gif)
-
-## 12. Habilitando controlador midi no Reaper
+## 11. Habilitando controlador midi no Reaper
 
 Para que haja comunicação entre a dawn e o teclado controlador precisamos ir até o menu de configurações do Reaper e habilitar o controle de mensagens.
 
